@@ -1,8 +1,7 @@
 import "./colorSelect.css";
 
-export default function ColorSelect(color) {
-  let hexCode = color.color;
-  console.log(hexCode);
+export default function ColorSelect(props) {
+  let hexCode = props.color;
 
   return (
     <div className="palette">
@@ -11,6 +10,7 @@ export default function ColorSelect(color) {
         style={{
           backgroundColor: `${hexCode}`,
         }}
+        onClick={() => props.colorSelected(hexCode)}
       ></button>
     </div>
   );

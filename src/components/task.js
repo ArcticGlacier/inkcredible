@@ -2,9 +2,9 @@ import { TextField } from "@mui/material";
 import "./task.css";
 import { IconButton, Icon } from "@mui/material";
 import ColorSelect from "./colorSelect";
-import { display } from "@mui/system";
+import React, { useState, useEffect } from "react";
 
-function DisplayTaskActions(isCreating) {
+function DisplayTaskActions(isCreating, handleNewTask) {
   if (!isCreating) {
     return (
       <div className="taskActions">
@@ -19,10 +19,10 @@ function DisplayTaskActions(isCreating) {
   } else {
     return (
       <div className="taskActions">
-        <IconButton aria-label="save">
+        <IconButton aria-label="save" onClick={() => handleNewTask()}>
           <Icon>bookmark</Icon>
         </IconButton>
-        <IconButton aria-label="discard">
+        <IconButton aria-label="discard" onClick={() => handleNewTask()}>
           <Icon>delete</Icon>
         </IconButton>
       </div>
@@ -30,55 +30,52 @@ function DisplayTaskActions(isCreating) {
   }
 }
 
-function DisplayColorOptions(isCreating) {
-  if (isCreating) {
-    const colors = [
-      "#FF006E",
-      "#FB5607",
-      "#FFCA3A",
-      "#8AC926",
-      "#3A86FF",
-      "#8338EC",
-      "#F8C8DC",
-      "#FAC898",
-      "#F2E2BA",
-      "#BAF2BB",
-      "#BAD7F2",
-      "#e7d1ff",
-    ];
-
+function DisplayCheckmark(isCreating) {
+  if (!isCreating) {
     return (
-      <div className="colorPalette">
-        {colors.map(function (color) {
-          return <ColorSelect color={color}></ColorSelect>;
-        })}
-      </div>
+      <IconButton
+        aria-label="complete"
+        sx={{
+          width: "50px",
+          height: "50px",
+        }}
+      >
+        <Icon>task_alt</Icon>
+      </IconButton>
     );
   }
 }
 
-export default function Task(
-  date,
-  icon,
-  color,
-  description,
-  id,
-  isComplete,
-  isCreating
-) {
+export default function Task(props) {
+  const colors = [
+    "#FF006E",
+    "#FB5607",
+    "#FFCA3A",
+    "#8AC926",
+    "#3A86FF",
+    "#8338EC",
+    "#F8C8DC",
+    "#FAC898",
+    "#F2E2BA",
+    "#BAF2BB",
+    "#BAD7F2",
+    "#e7d1ff",
+  ];
+
+  const [color, setColor] = useState("#BAD7F2");
+
+  let cardStyle = { backgroundColor: color };
+
+  function handleColorChange(hexCode) {
+    setColor(hexCode);
+  }
+
   return (
     <div className="creatingTask">
       <div className="completeTask">
-        <IconButton
-          aria-label="complete"
-          sx={{
-            width: "50px",
-            height: "50px",
-          }}
-        >
-          <Icon>task_alt</Icon>
-        </IconButton>
-        <div className="taskCard" variant="outlined">
+        {DisplayCheckmark(props.isCreating)}
+
+        <div className="taskCard" style={cardStyle}>
           <div className="taskInfo">
             <TextField
               placeholder="Enter Task Description"
@@ -86,10 +83,23 @@ export default function Task(
               variant="standard"
             ></TextField>
           </div>
-          {DisplayTaskActions(true)}
+          {DisplayTaskActions(props.isCreating, props.handleNewTask)}
         </div>
       </div>
-      {DisplayColorOptions(true)}
+      {props.isCreating ? (
+        <div className="colorPalette">
+          {colors.map(function (color) {
+            return (
+              <ColorSelect
+                color={color}
+                colorSelected={handleColorChange}
+              ></ColorSelect>
+            );
+          })}
+        </div>
+      ) : (
+        <div />
+      )}
     </div>
   );
 }

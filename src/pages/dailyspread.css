@@ -33,3 +33,9 @@
     align-items: center;
     padding-top:40px;
 }
+
+.dailySpreadContent{
+    width:100%;
+    display:flex;
+    flex-direction:row;
+}

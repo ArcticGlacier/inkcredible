@@ -9,30 +9,29 @@ import { useNavigate } from "react-router-dom";
 export default function CalendarComponent() {
   const [date, setDate] = useState(dayjs());
 
-  let navigate = useNavigate(); 
-  const routeChange = () =>{ 
-    let path = `/DailySpread/:${date}`;
+  let navigate = useNavigate();
+  const routeChange = (dateSelected) => {
+    let path = `/DailySpread/${dateSelected.toISOString()}`;
     navigate(path);
-  }
+  };
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-    <div className="calendarPage">
-      <h1>Inkredible</h1>
-      <DateCalendar
-        className="calendar"
-        sx={{
-          width: "70vw",
-          maxHeight: "100vh",
-        }}
-        value={date}
-        onChange={(dateSelected) => {
+      <div className="calendarPage">
+        <h1>Inkredible</h1>
+        <DateCalendar
+          className="calendar"
+          sx={{
+            width: "70vw",
+            maxHeight: "100vh",
+          }}
+          value={date}
+          onChange={(dateSelected) => {
             setDate(dateSelected);
-            routeChange();
-        }
-        }
-      />
-    </div>
+            routeChange(dateSelected);
+          }}
+        />
+      </div>
     </LocalizationProvider>
   );
 }

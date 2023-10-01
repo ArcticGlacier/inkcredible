@@ -1,17 +1,11 @@
-import CalendarComponent from './views/pages/calendar';
-import './App.css';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import CalendarComponent from "./views/pages/calendar";
+import "./App.css";
 
-
-function App({children}) {
+function App() {
   return (
-    <div className='appPage'> <LocalizationProvider dateAdapter={AdapterDayjs}>
-    {children}
-    <CalendarComponent></CalendarComponent>
-  </LocalizationProvider>
-</div>
-   
+    <div className="appPage">
+        <CalendarComponent />
+    </div>
   );
 }
 

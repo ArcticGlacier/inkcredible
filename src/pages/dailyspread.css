@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+.dailySpread{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:100vw;
+    height:100vh;
+    background-color: #52b7ff;
+}
+
+#date{
+    color:white;
+    font-family: "Mochiy Pop One", sans-serif;
+    font-size: 3rem;
+    text-decoration: none;
+    font-weight: 800;
+    transition: 1s;
+}
+
+#date:hover{
+    cursor:pointer;
+    font-size: 3.25rem;
+    transition: 1s;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    align-items: center;
+    padding-top:40px;
+}

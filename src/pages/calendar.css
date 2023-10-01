@@ -8,13 +8,15 @@
     height:100vh;
 }
 
+h1{
+    color:white;
+}
+
 .MuiDateCalendar-root{
-    border: solid;
-    border-Width:1px;
-    border-Color:'black';
     border-radius: 16px;
     height:80vh;
     margin-bottom: 0;
+    background-color: white;
 }
 .MuiPickersCalendarHeader-root{
     margin: 50px 110px !important;
@@ -27,7 +29,8 @@
 .MuiDayCalendar-header{
     justify-content: space-evenly !important;
     border-top:solid;
-    border-width:1px;
+    border-width:2px;
+    border-color: #f0f0f0;
 
 }
 

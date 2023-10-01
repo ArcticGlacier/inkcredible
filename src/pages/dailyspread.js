@@ -5,6 +5,7 @@ import {
   ExtractDateFromPath,
   moveDateBackward,
   moveDateForward,
+  FormatNumericalDate,
 } from "../utils/dateUtils";
 import React, { useEffect, useState } from "react";
 import {
@@ -18,19 +19,21 @@ import Diary from "../components/diary";
 
 export default function DailySpread() {
   const [date, setDate] = useState(ExtractDateFromPath());
+  const [taskList, setTaskList] = useState(
+    getTaskList(FormatNumericalDate(date))
+  );
   const [starCount, setStarCount] = useState();
 
-  let taskList = [];
   let diaryEntries = [];
   let inventoryItems = [];
   let storeItems = [];
 
-  useEffect(() => {
-    taskList = getTaskList(date);
-    diaryEntries = getEntry(date);
-    inventoryItems = getInventory();
-    storeItems = getStoreItems();
-  });
+  console.log(taskList);
+  console.log(FormatNumericalDate(date));
+
+  function updateTaskList() {
+    setTaskList(getTaskList(FormatNumericalDate(date)));
+  }
 
   return (
     <div className="dailySpread">

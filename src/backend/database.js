@@ -9,6 +9,7 @@ let storeItems = []; // Each object is icon, text description, cost, isOwned **P
 // Add to task list: Take task object as parameter
 export function addTask(task) {
   taskList.push(task);
+  console.log(taskList);
 }
 
 // Remove from task list: Take task id as parameter

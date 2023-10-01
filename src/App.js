@@ -1,10 +1,10 @@
-import CalendarComponent from "./views/pages/calendar";
+import CalendarComponent from "./pages/calendar";
 import "./App.css";
 
 function App() {
   return (
     <div className="appPage">
-        <CalendarComponent />
+      <CalendarComponent />
     </div>
   );
 }

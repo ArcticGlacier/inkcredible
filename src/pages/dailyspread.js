@@ -13,6 +13,8 @@ import {
   getTaskList,
   getEntry,
 } from "../backend/database";
+import Agenda from "../components/agenda";
+import Diary from "../components/diary";
 
 export default function DailySpread() {
   const [date, setDate] = useState(ExtractDateFromPath());
@@ -50,6 +52,10 @@ export default function DailySpread() {
         >
           <Icon sx={{ color: "white", fontSize: "3rem" }}>navigate_next</Icon>
         </IconButton>
+      </div>
+      <div className="dailySpreadContent">
+        <Agenda></Agenda>
+        <Diary></Diary>
       </div>
     </div>
   );

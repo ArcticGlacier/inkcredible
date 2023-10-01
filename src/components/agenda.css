@@ -1,0 +1,7 @@
+.agendaDiv{
+    background-color: white;
+    height: 80vh;
+    flex-grow:1;
+    border-radius: 12px;
+    margin:40px;
+}

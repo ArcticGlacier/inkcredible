@@ -1,7 +1,7 @@
 .diaryDiv{
     background-color: white;
     border-radius: 12px;
-    flex-grow:2;
+    width:66vw;
     margin:40px 30px 40px 20px;
     height: 80vh;
 }

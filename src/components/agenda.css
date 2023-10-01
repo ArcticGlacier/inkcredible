@@ -3,7 +3,7 @@
 .agendaDiv{
     background-color: white;
     height: 80vh;
-    flex-grow:1;
+    width:33vw;
     border-radius: 12px;
     margin:40px 20px 40px 30px;    
     text-align: center;
@@ -21,4 +21,12 @@
 
 #addTaskButton{
     margin: 20px auto;
+}
+
+.taskDiv{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin:20px 0px;
 }

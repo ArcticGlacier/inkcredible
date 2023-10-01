@@ -54,7 +54,7 @@ export default function DailySpread() {
         </IconButton>
       </div>
       <div className="dailySpreadContent">
-        <Agenda tasks={taskList}></Agenda>
+        <Agenda tasks={taskList} date={date}></Agenda>
         <Diary></Diary>
       </div>
     </div>

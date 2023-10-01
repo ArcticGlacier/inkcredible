@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+.completeTask{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.taskCard{
+    width:17vw;
+    height:10vw;
+    border-radius:12px;
+    border:solid;
+    border-width: 1px;
+    border-color:rgb(221, 221, 221);
+    display: flex;
+    flex-direction: row;
+    margin-left: 25px;
+
+    
+    
+}
+
+.taskInfo{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left:auto;
+
+}
+
+.taskActions{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left:auto;
+}
+
+.colorPalette{
+    justify-content: space-evenly;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width:55%;
+    margin-top:40px;
+    margin-left:25px;
+
+}
+
+.creatingTask{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 40px;
+}

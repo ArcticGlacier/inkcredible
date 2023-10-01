@@ -7,62 +7,83 @@ let inventoryItems = []; // Each object is simply an icon and text description
 let storeItems = []; // Each object is icon, text description, cost, isOwned **Populate this list in here Ritwika! <---
 
 // Add to task list: Take task object as parameter
-function addTask(task) {
+export function addTask(task) {
   taskList.push(task);
 }
 
 // Remove from task list: Take task id as parameter
-function removeTask(id) {
+export function removeTask(id) {
   let index = taskList.findIndex((element) => element.id == id);
   taskList.splice(index, index);
 }
 
 // Edit task list: Take task as parameter
-function editTask(task) {
+export function editTask(task) {
   removeTask(task.id);
   addTask(task);
 }
 
 // Complete or undo completing task
-function completeTask(id, complete) {
+export function completeTask(id, complete) {
   let index = taskList.findIndex((element) => element.id == id);
   taskList[index].isComplete = complete;
 }
 
+// Retrieve the tasklist
+export function getTaskList(date) {
+  return taskList.filter((task) => task.date == date);
+}
+
 // Add diary entry item
-function addEntry(entry) {
+export function addEntry(entry) {
   diaryEntries.push(entry);
 }
 
 // Remove entry item
-function removeEntry(id) {
+export function removeEntry(id) {
   let index = diaryEntries.findIndex((element) => element.id == id);
   diaryEntries.splice(index, index);
 }
 
 // Edit entry item
-function editEntry(entry) {
+export function editEntry(entry) {
   removeEntry(entry.id);
   addEntry(entry);
 }
 
+export function getEntry(date) {
+  return diaryEntries.filter((entry) => entry.date == date);
+}
+
+export function getStars() {
+  return starCount;
+}
+
 // Add to star balance
-function depositStars(numOfStars) {
+export function depositStars(numOfStars) {
   starCount += numOfStars;
 }
 
 // Remove from star balance
-function withdrawStars(numOfStars) {
+export function withdrawStars(numOfStars) {
   starCount -= numOfStars;
 }
 
 // Add item to inventory after purchase
-function addItemToInventory(item) {
+export function addItemToInventory(item) {
   inventoryItems.push(item);
 }
 
+export function getInventory() {
+  return inventoryItems;
+}
+
 // Indicate item was bought
-function storeItemBought(item) {
+export function storeItemBought(item) {
   let index = storeItems.findIndex((element) => element.id == item.id);
   storeItems[index].owned = true;
+}
+
+export function getStoreItems() {
+  return storeItems;
 }

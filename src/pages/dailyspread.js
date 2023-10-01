@@ -7,9 +7,28 @@ import {
   moveDateForward,
 } from "../utils/dateUtils";
 import React, { useEffect, useState } from "react";
+import {
+  getInventory,
+  getStoreItems,
+  getTaskList,
+  getEntry,
+} from "../backend/database";
 
 export default function DailySpread() {
   const [date, setDate] = useState(ExtractDateFromPath());
+  const [starCount, setStarCount] = useState();
+
+  let taskList = [];
+  let diaryEntries = [];
+  let inventoryItems = [];
+  let storeItems = [];
+
+  useEffect(() => {
+    taskList = getTaskList(date);
+    diaryEntries = getEntry(date);
+    inventoryItems = getInventory();
+    storeItems = getStoreItems();
+  });
 
   return (
     <div className="dailySpread">

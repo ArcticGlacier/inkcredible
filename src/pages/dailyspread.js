@@ -3,31 +3,30 @@ import "./dailyspread.css";
 import { Icon, IconButton } from "@mui/material";
 import {
   ExtractDateFromPath,
-  ConvertToMonth,
   moveDateBackward,
   moveDateForward,
 } from "../utils/dateUtils";
+import React, { useEffect, useState } from "react";
 
 export default function DailySpread() {
-  let currentDate = ExtractDateFromPath();
-  let monthString = ConvertToMonth(currentDate.month);
+  const [date, setDate] = useState(ExtractDateFromPath());
 
   return (
     <div className="dailySpread">
       <div className="header">
         <IconButton
           onClick={() => {
-            moveDateBackward(currentDate);
+            setDate(moveDateBackward(date));
           }}
         >
           <Icon sx={{ color: "white", fontSize: "3rem" }}>navigate_before</Icon>
         </IconButton>
         <Link to={"/"} id="date">
-          {monthString} {currentDate.day}, {currentDate.year}
+          {date.month} {date.day}, {date.year}
         </Link>
         <IconButton
           onClick={() => {
-            moveDateForward(currentDate);
+            setDate(moveDateForward(date));
           }}
         >
           <Icon sx={{ color: "white", fontSize: "3rem" }}>navigate_next</Icon>

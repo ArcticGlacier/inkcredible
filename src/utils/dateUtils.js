@@ -12,46 +12,62 @@ const ExtractDateFromPath = () => {
 
 // Formats a string that is in YYYY/MM/DD into a date object
 const FormatDate = (date) => {
+  let monthIndex = date.slice(5, 7);
+  let monthString = ConvertToMonth(monthIndex, true);
+
   return {
     year: date.slice(0, 4),
-    month: date.slice(5, 7),
+    month: monthString,
     day: date.slice(8),
   };
 };
 
 // Takes in a number representing a month and converts to string
-const ConvertToMonth = (monthNum) => {
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  return months[monthNum - 1];
+const ConvertToMonth = (month, getString) => {
+  const months = {
+    January: "01",
+    February: "02",
+    March: "03",
+    April: "04",
+    May: "05",
+    June: "06",
+    July: "07",
+    August: "08",
+    September: "09",
+    October: "10",
+    November: "11",
+    December: "12",
+  };
+
+  if (getString) {
+    let monthkeys = Object.keys(months);
+    return monthkeys[month - 1];
+  } else {
+    return months[month];
+  }
 };
 
 // Finds the next day. CurrentDate is an object with three properties
 const moveDateForward = (currentDate) => {
-  let date = dayjs(
-    `${currentDate.year}-${currentDate.month}-${currentDate.day}`
-  ).add(1, "day");
-  console.log(date.toISOString());
+  let monthIndex = ConvertToMonth(currentDate.month, false);
+
+  let date = dayjs(`${currentDate.year}-${monthIndex}-${currentDate.day}`)
+    .add(1, "day")
+    .toISOString()
+    .slice(0, 10);
+
+  return FormatDate(date);
 };
 
 // Finds the previous day. CurrentDate is an object with three properties
 const moveDateBackward = (currentDate) => {
-  let date = dayjs(
-    `${currentDate.year}-${currentDate.month}-${currentDate.day}`
-  ).subtract(1, "day");
-  console.log(date.toISOString());
+  let monthIndex = ConvertToMonth(currentDate.month, false);
+
+  let date = dayjs(`${currentDate.year}-${monthIndex}-${currentDate.day}`)
+    .subtract(1, "day")
+    .toISOString()
+    .slice(0, 10);
+  return FormatDate(date);
 };
 
 export {

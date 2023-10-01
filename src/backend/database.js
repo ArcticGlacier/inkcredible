@@ -4,7 +4,7 @@ let taskList = []; // Each object is a task: Date, icon, color, description. id,
 let diaryEntries = []; // Each object is an entry: Date, text, pictures, id, background, stickers, fronts, etc.
 let starCount = 0;
 let inventoryItems = []; // Each object is simply an icon and text description
-let storeItems = []; // Each object is icon, text description, cost, owned **Populate this list in here Ritwika! <---
+let storeItems = []; // Each object is icon, text description, cost, isOwned **Populate this list in here Ritwika! <---
 
 // Add to task list: Take task object as parameter
 function addTask(task){

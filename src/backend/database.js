@@ -4,7 +4,7 @@ let taskList = []; // Each object is a task: Date, icon, color, description. id,
 let diaryEntries = []; // Each object is an entry: Date, text, pictures, id, background, stickers, fronts, etc.
 let starCount = 0;
 let inventoryItems = []; // Each object is simply an icon and text description
-let storeItems = []; // Each object is icon, text description, cost, isOwned **Populate this list in here Ritwika! <---
+let storeItems = [{iconPath:"src\backend\storeItems\gummy_rabbits.png", text:"Gummy Rabbits", starCost: 10, owned: false}, {iconPath:"src\backend\storeItems\watermelon.png", text:"Watermelon Slices", starCost: 10, owned: false}, {iconPath:"src\backend\storeItems\rose.png", text:"Rose", starCost: 10, owned: false}, {iconPath:"src\backend\storeItems\popsicle.png", text:"Popsicle", starCost: 10, owned: false}, {iconPath:"src\backend\storeItems\lollipop.png", text:"Lollipop", starCost: 10, owned: false}, {iconPath:"src\backend\storeItems\icecream.png", text:"Ice Cream", starCost: 10, owned: false},{iconPath:"src\backend\storeItems\donut.png", text:"Donut", starCost: 10, owned: false},{iconPath:"src\backend\storeItems\big_watermelon.png", text:"Watermelon", starCost: 10, owned: false}]; // Each object is icon, text description, cost, isOwned **Populate this list in here Ritwika! <---
 
 // Add to task list: Take task object as parameter
 export function addTask(task) {
@@ -64,14 +64,9 @@ export function depositStars(numOfStars) {
   starCount += numOfStars;
 }
 
-// Remove from star balance
+// Remove from star balance CBT
 export function withdrawStars(numOfStars) {
   starCount -= numOfStars;
-}
-
-// Add item to inventory after purchase
-export function addItemToInventory(item) {
-  inventoryItems.push(item);
 }
 
 export function getInventory() {
@@ -82,8 +77,19 @@ export function getInventory() {
 export function storeItemBought(item) {
   let index = storeItems.findIndex((element) => element.id == item.id);
   storeItems[index].owned = true;
+  inventoryItems.push(item); // Add item to inventory after purchase
+  withdrawStars(item.starCost);
+  // if the item cost > account balance disable the buy button.
 }
 
 export function getStoreItems() {
   return storeItems;
 }
+
+//export function getStoreOpening(){
+  //if (storeOpen){
+    //<StoreDrawer/>
+  //}//showing drawer
+  
+  //var storeOpen = true;
+  // return storeOpen;

@@ -22,6 +22,10 @@ const FormatDate = (date) => {
   };
 };
 
+export const FormatNumericalDate = (date) => {
+  return `${date.year}-${ConvertToMonth(date.month, false)}-${date.day}`;
+};
+
 // Takes in a number representing a month and converts to string
 const ConvertToMonth = (month, getString) => {
   const months = {

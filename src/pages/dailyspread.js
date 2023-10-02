@@ -16,6 +16,7 @@ import {
 } from "../backend/database";
 import Agenda from "../components/agenda";
 import Diary from "../components/diary";
+import { DateField } from "@mui/x-date-pickers";
 
 export default function DailySpread() {
   const [date, setDate] = useState(ExtractDateFromPath());
@@ -28,12 +29,10 @@ export default function DailySpread() {
   let inventoryItems = [];
   let storeItems = [];
 
-  console.log(taskList);
-  console.log(FormatNumericalDate(date));
-
-  function updateTaskList() {
-    setTaskList(getTaskList(FormatNumericalDate(date)));
-  }
+  useEffect(() => {
+    let newList = getTaskList(FormatNumericalDate(date));
+    setTaskList(...newList);
+  }, [date, taskList]);
 
   return (
     <div className="dailySpread">

@@ -5,7 +5,7 @@ import { Add } from "@mui/icons-material";
 import Task from "./task";
 import React, { useEffect, useState } from "react";
 import { v4 as uuid } from "uuid";
-import { addTask, getTaskList } from "../backend/database";
+import { addTask, getTaskList, removeTask } from "../backend/database";
 import { FormatNumericalDate } from "../utils/dateUtils";
 
 export default function Agenda(props) {
@@ -13,7 +13,6 @@ export default function Agenda(props) {
   const [taskList, setTaskList] = useState(props.tasks);
 
   function FinishNewTask(saveTask, description, color) {
-    console.log(description, color);
     if (saveTask) {
       let task = {
         date: FormatNumericalDate(props.date),
@@ -25,11 +24,17 @@ export default function Agenda(props) {
       addTask(task);
     }
     setCreatingTask(false);
+    setTaskList(getTaskList(FormatNumericalDate(props.date)));
+  }
+
+  function DeleteTask(taskId) {
+    removeTask(taskId);
+    setTaskList(getTaskList(FormatNumericalDate(props.date)));
   }
 
   useEffect(() => {
     setTaskList(getTaskList(FormatNumericalDate(props.date)));
-  }, [creatingTask]);
+  }, [props.date]);
 
   return (
     <div className="agendaDiv">
@@ -46,9 +51,11 @@ export default function Agenda(props) {
                 icon={task.icon}
                 color={task.color}
                 description={task.description}
-                key={task.id}
+                id={task.id}
                 isComplete={task.isComplete}
                 isCreating={false}
+                deleteTask={DeleteTask}
+                key={task.id}
               ></Task>
             );
           })

@@ -9,13 +9,12 @@ let storeItems = []; // Each object is icon, text description, cost, isOwned **P
 // Add to task list: Take task object as parameter
 export function addTask(task) {
   taskList.push(task);
-  console.log(taskList);
 }
 
 // Remove from task list: Take task id as parameter
 export function removeTask(id) {
   let index = taskList.findIndex((element) => element.id == id);
-  taskList.splice(index, index);
+  taskList.splice(index, 1);
 }
 
 // Edit task list: Take task as parameter
@@ -32,7 +31,9 @@ export function completeTask(id, complete) {
 
 // Retrieve the tasklist
 export function getTaskList(date) {
-  return taskList.filter((task) => task.date == date);
+  let list = taskList.filter((task) => task.date == date);
+
+  return list;
 }
 
 // Add diary entry item

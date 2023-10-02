@@ -69,7 +69,10 @@ export default function Task(props) {
               <IconButton aria-label="edit">
                 <Icon>edit</Icon>
               </IconButton>
-              <IconButton aria-label="delete">
+              <IconButton
+                aria-label="delete"
+                onClick={() => props.deleteTask(props.id)}
+              >
                 <Icon>delete</Icon>
               </IconButton>
             </div>

@@ -58,3 +58,7 @@
     align-items: center;
     margin-top: 40px;
 }
+
+#bookmark:hover{
+    color:rgb(255, 201, 53);
+}

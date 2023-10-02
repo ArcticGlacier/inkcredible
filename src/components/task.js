@@ -102,7 +102,7 @@ export default function Task(props) {
                 aria-label="save"
                 onClick={() => props.handleNewTask(true, description, color)}
               >
-                <Icon>bookmark</Icon>
+                <Icon id="bookmark">bookmark</Icon>
               </IconButton>
               <IconButton
                 aria-label="discard"

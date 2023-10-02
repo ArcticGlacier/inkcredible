@@ -22,7 +22,9 @@ function DisplayCheckmark(
         }}
         onClick={() => toggleTaskCompletion(taskId, !isComplete)}
       >
-        <Icon sx={{ color: iconHex }}>task_alt</Icon>
+        <Icon id="checkmark" sx={{ color: iconHex }}>
+          task_alt
+        </Icon>
       </IconButton>
     );
   }

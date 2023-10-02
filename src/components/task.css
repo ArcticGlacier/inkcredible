@@ -59,6 +59,10 @@
     margin-top: 40px;
 }
 
+#checkmark:hover{
+    color: "#8AC926" !important;
+}
+
 #bookmark:hover{
-    color:rgb(255, 201, 53);
+    color:rgb(255, 187, 0);
 }

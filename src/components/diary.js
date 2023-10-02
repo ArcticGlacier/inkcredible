@@ -5,7 +5,7 @@ export default function Diary(props) {
   return (
     <div className="diaryDiv">
       <h1>My Diary</h1>
-      <Icon>star </Icon>
+      <Icon>star</Icon>
     </div>
   );
 }

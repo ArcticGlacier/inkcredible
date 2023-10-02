@@ -3,32 +3,7 @@ import "./task.css";
 import { IconButton, Icon } from "@mui/material";
 import ColorSelect from "./colorSelect";
 import React, { useState, useEffect } from "react";
-
-function DisplayTaskActions(isCreating, handleNewTask) {
-  if (!isCreating) {
-    return (
-      <div className="taskActions">
-        <IconButton aria-label="edit">
-          <Icon>edit</Icon>
-        </IconButton>
-        <IconButton aria-label="delete">
-          <Icon>delete</Icon>
-        </IconButton>
-      </div>
-    );
-  } else {
-    return (
-      <div className="taskActions">
-        <IconButton aria-label="save" onClick={() => handleNewTask()}>
-          <Icon>bookmark</Icon>
-        </IconButton>
-        <IconButton aria-label="discard" onClick={() => handleNewTask()}>
-          <Icon>delete</Icon>
-        </IconButton>
-      </div>
-    );
-  }
-}
+import { fontSize } from "@mui/system";
 
 function DisplayCheckmark(isCreating) {
   if (!isCreating) {
@@ -62,7 +37,8 @@ export default function Task(props) {
     "#e7d1ff",
   ];
 
-  const [color, setColor] = useState("#BAD7F2");
+  const [color, setColor] = useState(props.color);
+  const [description, setInputValue] = useState("");
 
   let cardStyle = { backgroundColor: color };
 
@@ -77,13 +53,45 @@ export default function Task(props) {
 
         <div className="taskCard" style={cardStyle}>
           <div className="taskInfo">
-            <TextField
-              placeholder="Enter Task Description"
-              size="small"
-              variant="standard"
-            ></TextField>
+            {!props.isCreating ? (
+              <p>{props.description}</p>
+            ) : (
+              <TextField
+                placeholder="Enter Task Description"
+                size="small"
+                variant="standard"
+                onChange={(e) => setInputValue(e.target.value)}
+              ></TextField>
+            )}
           </div>
-          {DisplayTaskActions(props.isCreating, props.handleNewTask)}
+          {!props.isCreating ? (
+            <div className="taskActions">
+              <IconButton aria-label="edit">
+                <Icon>edit</Icon>
+              </IconButton>
+              <IconButton
+                aria-label="delete"
+                onClick={() => props.deleteTask(props.id)}
+              >
+                <Icon>delete</Icon>
+              </IconButton>
+            </div>
+          ) : (
+            <div className="taskActions">
+              <IconButton
+                aria-label="save"
+                onClick={() => props.handleNewTask(true, description, color)}
+              >
+                <Icon>bookmark</Icon>
+              </IconButton>
+              <IconButton
+                aria-label="discard"
+                onClick={() => props.handleNewTask(false, description, color)}
+              >
+                <Icon>delete</Icon>
+              </IconButton>
+            </div>
+          )}
         </div>
       </div>
       {props.isCreating ? (

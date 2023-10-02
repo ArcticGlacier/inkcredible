@@ -11,9 +11,9 @@ const generateNewPrompt = () => {
 
     return (
         <div>
-            <h1>Diary Entry Subject</h1>
-            <button onClick={generateNewPrompt}>Give me a subject</button>
-            {newPrompt && <p>Your subject for today: {newPrompt}</p>}
+            <h1 id="topic">What are you writing about today?</h1>
+            <button onClick={generateNewPrompt}>Give me a prompt!</button>
+            {newPrompt && <h2 id="promptStyle"> {newPrompt}</h2>}
         </div>
     );
 };

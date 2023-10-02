@@ -8,55 +8,8 @@ export default function Diary(prop){
     
     return (
       <div className="diaryDiv">
-      <h1>Diary</h1>
-      <PromptGenerator prompts={promptArray} />
+        <h1 id="prompting">Diary</h1>
+        <h2 id= "givenPrompt"><PromptGenerator prompts={promptArray} /></h2>
     </div>
     );
-}
-
-class MyComponent extends React.Component {
-  state = {
-      textBoxes: [], // to keep track of the text boxes
-      textBoxValues: {} // to keep track of the text box values
-  }
-
-  addTextBox = () => {
-      this.setState(prevState => ({
-          textBoxes: [...prevState.textBoxes, '']
-      }))
-  }
-
-  handleInputChange = (e, index) => {
-      this.setState(prevState => ({
-          textBoxValues: {
-              ...prevState.textBoxValues,
-              [index]: e.target.value
-          }
-      }))
-  }
-
-  handleSubmit = () => {
-      const { textBoxValues } = this.state;
-
-      // handle the submission of the text box values
-      console.log(textBoxValues);
-  }
-
-  render() {
-      const { textBoxes } = this.state;
-
-      return (
-          <div>
-              {textBoxes.map((textBox, index) => (
-                  <input 
-                      key={index} 
-                      type='text' 
-                      onChange={e => this.handleInputChange(e, index)} 
-                  />
-              ))}
-              <button onClick={this.addTextBox}>Add Text Box</button>
-              <button onClick={this.handleSubmit}>Submit</button>
-          </div>
-      )
-  }
 }

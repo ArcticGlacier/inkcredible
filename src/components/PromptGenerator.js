@@ -10,8 +10,7 @@ const generateNewPrompt = () => {
 }; 
 
     return (
-        <div>
-            <h1 id="topic">What are you writing about today?</h1>
+        <div className="container">
             <button onClick={generateNewPrompt}>Give me a prompt!</button>
             {newPrompt && <h2 id="promptStyle"> {newPrompt}</h2>}
         </div>

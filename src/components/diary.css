@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
-.container{
-    display: flex;
-    align-items: c;
-}
 .diaryDiv{
     background-color: white;
     border-radius: 12px;
@@ -17,8 +13,6 @@
     font-weight: 700;
     fill: rgb(0, 0, 0);
     text-align: center;
-    display:flex;
-    flex-direction:column;
     align-items: center;
 }
 
@@ -30,31 +24,49 @@ button {
     border: none;
     border-radius: 7px;
     padding: 10px 15px;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
     height: 7vh;
-    display:flex;
+    /* display:flex;
     flex-direction:column;
-    align-items: center;
+    align-items: center; */
+
 }
 
 #givenPrompt{
-    color:rgb(255, 0, 0);
+    color:#ff5252;
     font-weight: 35;
-    fill: rgb(0, 0, 0);
+    fill: #ff5252;
     text-align: center;
     font-size: 15px;
+    margin-bottom: 30px;
 }
 
 #topic{
     color:rgb(0, 0, 0);
     font-weight: 5px;
     fill: rgb(0, 0, 0);
-    text-align: left;
-    font-size: 25px;
+    text-align: center;
+    font-size: 20px;
     margin-left: 30px;
     display:flex;
     flex-direction:column;
-    align-items: left;
     font-style: italic;
 }
+
+.textbox {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: left;
+    height: 80%;
+    width: 80%;
+    max-height: 50vw;
+    max-width: 50vw;
+
+
+}
+

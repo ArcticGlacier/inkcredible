@@ -1,0 +1,16 @@
+#topic{
+    color:rgb(37, 37, 37);
+    font-weight: 10px;
+    fill: rgb(97, 255, 252);
+    text-align: center;
+    font-size: 100px;
+}
+
+#promptStyle{
+    color:rgb(0, 0, 0);
+    font-weight: 10px;
+    fill: rgb(0, 0, 0);
+    text-align: center;
+    font-size: 27px;
+}
+

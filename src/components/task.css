@@ -28,7 +28,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left:auto;
+    margin-left:50px;
+    
 
 }
 
@@ -56,4 +57,12 @@
     justify-content: space-around;
     align-items: center;
     margin-top: 40px;
+}
+
+#checkmark:hover{
+    color: "#8AC926" !important;
+}
+
+#bookmark:hover{
+    color:rgb(255, 187, 0);
 }

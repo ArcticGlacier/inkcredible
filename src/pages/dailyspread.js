@@ -25,10 +25,6 @@ export default function DailySpread() {
   );
   const [starCount, setStarCount] = useState();
 
-  let diaryEntries = [];
-  let inventoryItems = [];
-  let storeItems = [];
-
   useEffect(() => {
     let newList = getTaskList(FormatNumericalDate(date));
     setTaskList(...newList);
@@ -57,7 +53,7 @@ export default function DailySpread() {
       </div>
       <div className="dailySpreadContent">
         <Agenda tasks={taskList} date={date}></Agenda>
-        <Diary></Diary>
+        <Diary starCount={starCount}></Diary>
       </div>
     </div>
   );

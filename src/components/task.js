@@ -3,9 +3,15 @@ import "./task.css";
 import { IconButton, Icon } from "@mui/material";
 import ColorSelect from "./colorSelect";
 import React, { useState, useEffect } from "react";
-import { fontSize } from "@mui/system";
 
-function DisplayCheckmark(isCreating) {
+function DisplayCheckmark(
+  isCreating,
+  taskId,
+  isComplete,
+  toggleTaskCompletion
+) {
+  let iconHex = isComplete ? "#8AC926" : "grey";
+
   if (!isCreating) {
     return (
       <IconButton
@@ -14,8 +20,11 @@ function DisplayCheckmark(isCreating) {
           width: "50px",
           height: "50px",
         }}
+        onClick={() => toggleTaskCompletion(taskId, !isComplete)}
       >
-        <Icon>task_alt</Icon>
+        <Icon id="checkmark" sx={{ color: iconHex }}>
+          task_alt
+        </Icon>
       </IconButton>
     );
   }
@@ -46,10 +55,23 @@ export default function Task(props) {
     setColor(hexCode);
   }
 
+  useEffect(() => {
+    if (props.isComplete) {
+      handleColorChange("#ffffff");
+    } else {
+      handleColorChange(props.color);
+    }
+  }, [props.isComplete]);
+
   return (
     <div className="creatingTask">
       <div className="completeTask">
-        {DisplayCheckmark(props.isCreating)}
+        {DisplayCheckmark(
+          props.isCreating,
+          props.id,
+          props.isComplete,
+          props.toggleTaskCompletion
+        )}
 
         <div className="taskCard" style={cardStyle}>
           <div className="taskInfo">
@@ -64,7 +86,7 @@ export default function Task(props) {
               ></TextField>
             )}
           </div>
-          {!props.isCreating ? (
+          {!props.isCreating && !props.isComplete ? (
             <div className="taskActions">
               <IconButton aria-label="edit">
                 <Icon>edit</Icon>
@@ -76,13 +98,13 @@ export default function Task(props) {
                 <Icon>delete</Icon>
               </IconButton>
             </div>
-          ) : (
+          ) : !props.isComplete ? (
             <div className="taskActions">
               <IconButton
                 aria-label="save"
                 onClick={() => props.handleNewTask(true, description, color)}
               >
-                <Icon>bookmark</Icon>
+                <Icon id="bookmark">bookmark</Icon>
               </IconButton>
               <IconButton
                 aria-label="discard"
@@ -91,6 +113,8 @@ export default function Task(props) {
                 <Icon>delete</Icon>
               </IconButton>
             </div>
+          ) : (
+            <div />
           )}
         </div>
       </div>

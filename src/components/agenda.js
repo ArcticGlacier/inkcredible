@@ -5,7 +5,14 @@ import { Add } from "@mui/icons-material";
 import Task from "./task";
 import React, { useEffect, useState } from "react";
 import { v4 as uuid } from "uuid";
-import { addTask, getTaskList, removeTask } from "../backend/database";
+import {
+  addTask,
+  completeTask,
+  depositStars,
+  withdrawStars,
+  getTaskList,
+  removeTask,
+} from "../backend/database";
 import { FormatNumericalDate } from "../utils/dateUtils";
 
 export default function Agenda(props) {
@@ -29,6 +36,16 @@ export default function Agenda(props) {
 
   function DeleteTask(taskId) {
     removeTask(taskId);
+    setTaskList(getTaskList(FormatNumericalDate(props.date)));
+  }
+
+  function ToggleTaskCompletion(taskId, isComplete) {
+    completeTask(taskId, isComplete);
+    if (isComplete) {
+      depositStars(10);
+    } else {
+      withdrawStars(10);
+    }
     setTaskList(getTaskList(FormatNumericalDate(props.date)));
   }
 
@@ -56,6 +73,7 @@ export default function Agenda(props) {
                 isCreating={false}
                 deleteTask={DeleteTask}
                 key={task.id}
+                toggleTaskCompletion={ToggleTaskCompletion}
               ></Task>
             );
           })

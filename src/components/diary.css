@@ -1,7 +1,15 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
 .diaryDiv{
     background-color: white;
     border-radius: 12px;
     width:66vw;
     margin:40px 30px 40px 20px;
     height: 80vh;
+    text-align: center;
 }
+
+.h1{
+    color:rgb(59, 59, 59);
+    font-weight: 500;
+}    
